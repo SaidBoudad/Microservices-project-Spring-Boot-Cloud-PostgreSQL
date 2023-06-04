@@ -9,6 +9,4 @@ spring:
       server:
         git:
           uri: https://github.com/SaidBoudad/cloud-config-server
-      #native:
-      #search-locations: classpath:/configurations #will create local folder named configurations
-      #to store all global common properties to be used by other microservices
+

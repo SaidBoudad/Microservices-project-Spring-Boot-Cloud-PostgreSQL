@@ -2,6 +2,8 @@ server:
   port: 8091
 
 spring:
+  application:
+    name: school-service
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/students
