@@ -1,8 +1,7 @@
 server:
   port: 8091
+
 spring:
-  application:
-    name: schools
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/students
@@ -13,9 +12,8 @@ spring:
       ddl-auto: create
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
-  eureka:
-    instance:
-      hostname: localhost
-    client:
-      service-url:
-        defaultZone: http://localhost:8761/eureka
+
+application:
+  config:
+    students-url: http://localhost:8763/api/v1/students
+
