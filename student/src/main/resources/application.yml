@@ -4,8 +4,6 @@ server:
 spring:
   application:
     name: student-service
-  config:
-    uri : http://localhost:8763
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/students
@@ -17,4 +15,8 @@ spring:
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 
-
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

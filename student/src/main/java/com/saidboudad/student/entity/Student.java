@@ -1,4 +1,4 @@
-package entity;
+package com.saidboudad.student.entity;
 
 
 import jakarta.persistence.Entity;

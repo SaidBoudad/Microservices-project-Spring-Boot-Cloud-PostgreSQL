@@ -1,12 +1,14 @@
-package controller;
+package com.saidboudad.school.controller;
 
-import DTO.FullSchoolResponse;
-import entity.School;
+import com.saidboudad.school.DTO.FullSchoolResponse;
+import com.saidboudad.school.entity.School;
+import com.saidboudad.school.service.SchoolService;
+import com.saidboudad.student.entity.Student;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import service.SchoolService;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -14,6 +16,10 @@ import java.util.List;
 @RequestMapping("/api/v1/schools")
 @RequiredArgsConstructor
 public class SchoolController {
+
+    private final RestTemplate restTemplate;
+
+    private final String studentsServiceUrl = "http://student-service/api/v1/students";
 
     private final SchoolService service;
 
@@ -32,6 +38,11 @@ public class SchoolController {
     public ResponseEntity<FullSchoolResponse> findAllStudentsBySchoolId(
             @PathVariable("school-id") Integer schoolId
     ) {
+        List<Student> students = restTemplate.getForObject(studentsServiceUrl + "/school/" + schoolId, List.class);
+        // Process the students as needed
+        // ...
+
         return ResponseEntity.ok(service.findSchoolsWithStudents(schoolId));
     }
 }
+

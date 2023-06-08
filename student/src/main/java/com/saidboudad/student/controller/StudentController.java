@@ -1,11 +1,11 @@
-package controller;
+package com.saidboudad.student.controller;
 
-import entity.Student;
+import com.saidboudad.student.entity.Student;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import service.StudentService;
+import com.saidboudad.student.service.StudentService;
 
 import java.util.List;
 

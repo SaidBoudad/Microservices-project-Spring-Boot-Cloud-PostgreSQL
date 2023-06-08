@@ -1,4 +1,4 @@
-package entity;
+package com.saidboudad.school.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

@@ -1,9 +1,9 @@
-package service;
+package com.saidboudad.student.service;
 
-import entity.Student;
+import com.saidboudad.student.entity.Student;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import repository.StudentRepository;
+import com.saidboudad.student.repository.StudentRepository;
 
 import java.util.List;
 

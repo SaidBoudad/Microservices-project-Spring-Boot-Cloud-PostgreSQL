@@ -46,4 +46,8 @@ spring:
           predicates:
             - Path=/api/v1/schools/**
 
-
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

@@ -2,6 +2,9 @@ server:
   port: 8091
 
 spring:
+  config:
+    import:
+      - configserver:http://localhost:8763
   application:
     name: school-service
   datasource:
@@ -17,5 +20,10 @@ spring:
 
 application:
   config:
-    students-url: http://localhost:8763/api/v1/students
+    students-url: http://localhost:8090/api/v1/students
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

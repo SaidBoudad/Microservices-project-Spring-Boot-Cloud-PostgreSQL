@@ -1,7 +1,8 @@
   spring:
    cloud:
-    config:
-      uri: http://localhost:8763
-      name: config-service
-      profile: development
-      label: main
+     config:
+       import:
+         - configserver:http://localhost:8763
+       name: config-service
+       profile: development
+       label: main

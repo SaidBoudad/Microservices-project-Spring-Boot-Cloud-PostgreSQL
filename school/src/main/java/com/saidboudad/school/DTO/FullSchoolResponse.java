@@ -1,6 +1,6 @@
-package DTO;
+package com.saidboudad.school.DTO;
 
-import entity.Student;
+import com.saidboudad.student.entity.Student;
 import lombok.*;
 
 import java.util.List;

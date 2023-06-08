@@ -1,11 +1,13 @@
-package service;
+package com.saidboudad.school.service;
 
-import DTO.FullSchoolResponse;
-import entity.School;
+
+import com.saidboudad.school.DTO.FullSchoolResponse;
+import com.saidboudad.school.entity.School;
+import com.saidboudad.school.repository.SchoolRepository;
+import com.saidboudad.student.entity.Student;
+import com.saidboudad.student.service.StudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import repository.SchoolRepository;
-import studentClient.StudentClient;
 
 import java.util.List;
 
@@ -14,7 +16,7 @@ import java.util.List;
 public class SchoolService {
 
     private final SchoolRepository repository;
-    private final StudentClient client;
+    private final StudentService studentService;
 
     public void saveSchool(School school) {
         repository.save(school);
@@ -32,12 +34,12 @@ public class SchoolService {
                                 .email("NOT_FOUND")
                                 .build()
                 );
-        var students = client.findAllStudentsBySchool(schoolId);
+        List<Student> students = studentService.findAllStudentsBySchool(schoolId);
         return FullSchoolResponse.builder()
                 .name(school.getName())
                 .email(school.getEmail())
                 .students(students)
                 .build();
     }
+}
 
-    }
