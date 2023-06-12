@@ -1,7 +1,9 @@
 package com.saidboudad.student.controller;
 
+import com.saidboudad.student.DTO.StudentResponse;
 import com.saidboudad.student.entity.Student;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,12 +15,12 @@ import java.util.List;
 @RequestMapping("/api/v1/students")
 @RequiredArgsConstructor
 public class StudentController {
-
-    private final StudentService service;
+    @Autowired
+    private StudentService service;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void save( @RequestBody Student student) {
+    public void save(@RequestBody Student student) {
         service.saveStudent(student);
     }
 
@@ -28,7 +30,7 @@ public class StudentController {
     }
 
     @GetMapping("/school/{school-id}")
-    public ResponseEntity<List<Student>> findAllStudents(
+    public ResponseEntity<List<StudentResponse>> findAllStudents(
             @PathVariable("school-id") Integer schoolId
     ) {
         return ResponseEntity.ok(service.findAllStudentsBySchool(schoolId));

@@ -2,6 +2,9 @@ server:
   port: 8090
 
 spring:
+  config:
+    import:
+      - configserver:http://localhost:8763
   application:
     name: student-service
   datasource:
