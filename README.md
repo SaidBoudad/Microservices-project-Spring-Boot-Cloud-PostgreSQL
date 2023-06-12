@@ -1,5 +1,10 @@
 # Microservices-project-Spring-Boot-Cloud-PostgreSQL
 Microservices project using Spring Boot 3, Spring Cloud, and PostgreSQL database.  concepts such as API Gateway, Config Server, Discovery Server, and hands-on implementation of two real-world microservices, Student and School.
+ 
+the comunication between srevices is implemented by 3 way: just for study purpose
+1-RestTemplate: RestTemplate is a synchronous HTTP client
+2-WebClient: WebClient is a non-blocking, reactive HTTP client introduced in Spring WebFlux. It provides a more modern and flexible approach to making HTTP requests. WebClient is suitable for building reactive and asynchronous applications.
+3-OpenFeign: OpenFeign is a declarative web service client developed by Netflix and integrated into Spring Cloud. It simplifies the creation of RESTful service clients by using annotations to define the desired HTTP requests and responses. OpenFeign is a convenient choice for service-to-service communication in a microservices architecture.
 
 the Microservices project components:
 
