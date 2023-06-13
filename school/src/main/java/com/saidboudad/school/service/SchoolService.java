@@ -1,7 +1,7 @@
 package com.saidboudad.school.service;
 
 import com.saidboudad.school.DTO.FullSchoolResponse;
-import com.saidboudad.school.DTO.StudentResponse;
+import com.saidboudad.school.client.StudentClient;
 import com.saidboudad.school.entity.School;
 import com.saidboudad.school.repository.SchoolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +21,8 @@ public class SchoolService {
     @Autowired
     private SchoolRepository repository;
 
-//    @Autowired
-//    private StudentClient client;
+    @Autowired
+    private StudentClient studentClient;
 
     public void saveSchool(School school) {
         repository.save(school);
@@ -40,10 +40,11 @@ public class SchoolService {
                                 .email("NOT_FOUND")
                                 .build()
                 );
-        //var students = client.findAllStudentsBySchool(schoolId);
+
         //To call the student service using RESTTemplate
 //        List<StudentResponse> students = restTemplate
 //                .getForObject("http://localhost:8090/api/v1/students/school/{schoolId}",List.class,schoolId);
+
         //To call the student service using WebClient
 //        List<StudentResponse> students = webClient
 //                .get()
@@ -51,6 +52,9 @@ public class SchoolService {
 //                .retrieve()
 //                .bodyToMono(List.class)
 //                .block();
+
+        //To call the RestFull student service by feign client
+        var students = studentClient.findAllStudentsBySchool(schoolId);
         return FullSchoolResponse.builder()
                 .name(school.getName())
                 .email(school.getEmail())

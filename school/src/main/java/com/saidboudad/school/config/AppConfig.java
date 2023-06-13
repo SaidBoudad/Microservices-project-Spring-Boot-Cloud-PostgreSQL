@@ -18,10 +18,11 @@ public class AppConfig {
     public ModelMapper modelMapper(){
         return new ModelMapper();
     }
-    @Value("${studentservice.base.url}")
+    //This value to retrieve the url from application.yml file
+    @Value("${studentService.base.url}")
     private String studentServiceBaseUrl;
 
-    @Bean  //I use webclient for calling another RESTful service to beneficent from advantages of reactive programming
+    @Bean  //I use webclient for calling another RESTFul service to beneficent from advantages of reactive programming
     public WebClient webClient(){
         return WebClient
                 .builder()
