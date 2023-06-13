@@ -7,6 +7,7 @@ import com.saidboudad.school.repository.SchoolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.List;
 
@@ -16,7 +17,10 @@ public class SchoolService {
     @Autowired
     private RestTemplate restTemplate;
     @Autowired
+    private WebClient webClient;
+    @Autowired
     private SchoolRepository repository;
+
 //    @Autowired
 //    private StudentClient client;
 
@@ -37,8 +41,16 @@ public class SchoolService {
                                 .build()
                 );
         //var students = client.findAllStudentsBySchool(schoolId);
-        List<StudentResponse> students = restTemplate
-                .getForObject("http://localhost:8090/api/v1/students/school/{schoolId}",List.class,schoolId);
+        //To call the student service using RESTTemplate
+//        List<StudentResponse> students = restTemplate
+//                .getForObject("http://localhost:8090/api/v1/students/school/{schoolId}",List.class,schoolId);
+        //To call the student service using WebClient
+//        List<StudentResponse> students = webClient
+//                .get()
+//                .uri("/school/"+schoolId)
+//                .retrieve()
+//                .bodyToMono(List.class)
+//                .block();
         return FullSchoolResponse.builder()
                 .name(school.getName())
                 .email(school.getEmail())

@@ -14,13 +14,16 @@ spring:
     password: Saidboudad+
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 
 application:
   config:
     students-url: http://localhost:8090/api/v1/students
+studentservice:
+  base:
+    url: http://localhost:8090/api/v1/students
 
 management:
   endpoints:
