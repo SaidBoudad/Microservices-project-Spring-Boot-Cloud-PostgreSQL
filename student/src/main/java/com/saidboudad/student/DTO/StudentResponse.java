@@ -14,5 +14,11 @@ public class StudentResponse {
     private String firstname;
     private String lastname;
     private String email;
+
+    private String message;
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 }
 
