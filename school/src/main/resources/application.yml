@@ -30,4 +30,10 @@ management:
   endpoints:
     web:
       exposure:
-        include: "*"
+        include: "health,info"
+info:
+  app:
+    name: "School service"
+    version: "1.0.0"
+    description: "saidBoudadMicroservices application"
+

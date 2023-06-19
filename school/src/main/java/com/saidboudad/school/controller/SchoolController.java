@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -15,27 +14,25 @@ import java.util.List;
 @RequestMapping("/api/v1/schools")
 public class SchoolController {
     @Autowired
-    private RestTemplate restTemplate;
-    @Autowired
-    private SchoolService service;
+    private SchoolService schoolService;
 
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void save(@RequestBody School school) {
-        service.saveSchool(school);
+        schoolService.saveSchool(school);
     }
 
     @GetMapping
     public ResponseEntity<List<School>> findAllSchools() {
-        return ResponseEntity.ok(service.findAllSchools());
+        return ResponseEntity.ok(schoolService.findAllSchools());
     }
 
     @GetMapping("/with-students/{school-id}")
     public ResponseEntity<FullSchoolResponse> findAllStudentsBySchoolId(
             @PathVariable("school-id") Integer schoolId
     ) {
-        return ResponseEntity.ok(service.findSchoolsWithStudents(schoolId));
+        return ResponseEntity.ok(schoolService.callingStudentServiceUsingOpenFeign(schoolId));
     }
 }
 

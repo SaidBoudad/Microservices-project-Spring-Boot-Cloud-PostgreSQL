@@ -11,7 +11,7 @@ spring:
 eureka:
   client:
     register-with-eureka: true
-    fetch-registry: true
+    fetch-registry: false
 
 management:
   endpoints:

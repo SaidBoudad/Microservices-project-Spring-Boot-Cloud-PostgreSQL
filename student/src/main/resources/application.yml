@@ -18,8 +18,14 @@ spring:
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 
+eureka:
+  instance:
+    metadata-map:
+      configPath: /api/v1/students
+
 management:
   endpoints:
     web:
       exposure:
         include: "*"
+

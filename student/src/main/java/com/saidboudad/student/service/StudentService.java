@@ -7,6 +7,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalTime;
 import java.util.List;
 
 @Service
@@ -27,6 +28,7 @@ public class StudentService {
     public List<StudentResponse> findAllStudentsBySchool(Integer schoolId) {
         List<Student> students = repository.findAllBySchoolId(schoolId);
         List<StudentResponse> studentResponses = modelMapper.map(students,List.class);
+        System.out.println("finding list of student for school " + schoolId +" "+ LocalTime.now().toString());
         return studentResponses;
     }
 }
